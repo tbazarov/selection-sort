@@ -28,3 +28,23 @@ void selection_sort(void *arr, size_t size, size_t elem_size, int (*cmp)(void*, 
     }
 }
 
+void string_sel_sort(char *arr[], int n) {
+    int i, j, min_idx;
+    char *temp;
+
+    for (i = 0; i < n - 1; i++) {
+        min_idx = i;
+        for (j = i + 1; j < n; j++) {
+            if (strcmp(arr[j], arr[min_idx]) < 0) {
+                min_idx = j;
+            }
+        }
+        
+        if (min_idx != i) {
+            temp = arr[i];
+            arr[i] = arr[min_idx];
+            arr[min_idx] = temp;
+        }
+    }
+}
+
